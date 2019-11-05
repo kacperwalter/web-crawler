@@ -32,3 +32,15 @@ def append_to_file(path, data):
 def delete_file_contents(path):
     with open(path, 'w'):
         pass
+
+# read a file and convert each line to set items (in sets items cannot be duplicated)
+# 'rt' means read text
+def file_to_set(file_name):
+    results = set()
+    with open(file_name, 'rt') as f:
+        # looping through each line
+        for line in f:
+            results.add(line.replace('\n', ''))
+
+
+
