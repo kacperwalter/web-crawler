@@ -8,7 +8,7 @@ class LinkFinder(HTMLParser):
         self.page_url = page_url
         self.links = set()
 
-    def handle_startendtag(self, tag, attrs):
+    def handle_starttag(self, tag, attrs):
         # if the tag is a, that means is anchor
         if tag == 'a':
             # attribute == a href, value == url
