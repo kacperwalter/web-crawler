@@ -20,7 +20,12 @@ class Spider:
         Spider.queue_file = Spider.project_name + '/queue.txt'
         Spider.queue_file = Spider.project_name + '/crawled.txt'
         self.boot()
-        self.crawled_page('First spider', Spider.base_url)
-
+        self.crawl_page('First spider', Spider.base_url)
+        
+    def boot(self): # first spider is making project dir
+        create_project_dir(Spider.project_name)
+        create_data_files(Spider.project_name, Spider.base_url)
+        Spider.queue = file_to_set(Spider.queue_file) # first time spider is booted is taking links and saving them into a set
+        Spider.crawled = file_to_set(Spider.crawled_file)
 
 
