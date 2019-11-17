@@ -30,5 +30,13 @@ class Spider:
         Spider.crawled = file_to_set(Spider.crawled_file)
 
     @staticmethod
-    def crawl_page():
-        pass
+    def crawl_page(thread_name, page_url): # while crawling a page its good to display what page we are currently crawling
+        # if for making sure if we didnt already crawled this page
+        if page_url not in Spider.crawled:
+            print(thread_name + ' now crawling ' + page_url)
+            print('Queue ' + str(len(Spider.queue)) + ' | Crawled ' + str(len(Spider.crawled))) # how many links in a waiting list and how many links already has been crawled
+            Spider.add_links_to_queue(Spider.gather_link(page_url)) # adding sets of links to waitinglist | gather_link method is connecting to webpage and its gonna return a set of all of the links on webpage
+
+
+
+
