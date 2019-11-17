@@ -22,10 +22,13 @@ class Spider:
         self.boot()
         self.crawl_page('First spider', Spider.base_url)
         
-    def boot(self): # first spider is making project dir
+    @staticmethod #"this is a static method so we dont need to pass the self arg"
+    def boot(): # first spider is making project dir
         create_project_dir(Spider.project_name)
         create_data_files(Spider.project_name, Spider.base_url)
         Spider.queue = file_to_set(Spider.queue_file) # first time spider is booted is taking links and saving them into a set
         Spider.crawled = file_to_set(Spider.crawled_file)
 
-
+    @staticmethod
+    def crawl_page():
+        pass
