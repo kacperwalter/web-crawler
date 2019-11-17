@@ -36,7 +36,8 @@ class Spider:
             print(thread_name + ' now crawling ' + page_url)
             print('Queue ' + str(len(Spider.queue)) + ' | Crawled ' + str(len(Spider.crawled))) # how many links in a waiting list and how many links already has been crawled
             Spider.add_links_to_queue(Spider.gather_link(page_url)) # adding sets of links to waitinglist | gather_link method is connecting to webpage and its gonna return a set of all of the links on webpage
-
-
+            Spider.queue.remove(page_url) # removing link that we just crawled
+            Spider.crawled.add(page_url)
+            Spider.update_files()
 
 
